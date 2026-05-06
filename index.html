@@ -76,7 +76,7 @@
       z-index: 1;
     }
 
-    .hero h1 span { color: var(--accent); }
+    .hero h1 span { color: inherit; }
 
     .hero-title {
       margin-top: 8px;
@@ -97,6 +97,36 @@
       gap: 4px;
       position: relative;
       z-index: 1;
+    }
+
+    .hero-tagline {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      margin: 18px auto 0;
+      padding: 8px 20px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--text);
+      background: rgba(79,142,247,.08);
+      border: 1px solid rgba(79,142,247,.25);
+      border-radius: 30px;
+      backdrop-filter: blur(4px);
+      background-clip: padding-box;
+    }
+
+    .hero-tagline::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: 30px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(79,142,247,.6), rgba(124,77,255,.5), rgba(79,142,247,.2));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
     }
 
     .hero-links {
@@ -411,6 +441,15 @@
     footer a { color: var(--accent); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
+    /* ── Responsive button labels ── */
+    .btn-label-full { display: inline; }
+    .btn-label-short { display: none; }
+
+    @media (max-width: 480px) {
+      .btn-label-full { display: none; }
+      .btn-label-short { display: inline; }
+    }
+
     /* ── Icons (inline SVG via data URIs replaced with unicode) ── */
     .icon-location::before { content: "📍"; font-size: 0.8em; }
 
@@ -431,14 +470,15 @@
       <span class="icon-location"></span>
       Greater Edinburgh Area, Scotland
     </p>
+    <p class="hero-tagline">I help teams ship with confidence.</p>
     <nav class="hero-links">
       <a class="btn btn-primary" href="https://www.linkedin.com/in/markcraigrobertson" target="_blank" rel="noopener">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        LinkedIn Profile
+        <span class="btn-label-full">LinkedIn Profile</span><span class="btn-label-short">LinkedIn</span>
       </a>
-      <a class="btn btn-outline" href="#" target="_blank" rel="noopener" id="github-link">
+      <a class="btn btn-outline" href="https://www.github.com/sparkland" target="_blank" rel="noopener" id="github-link">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-        GitHub
+        <span class="btn-label-full">GitHub Profile</span><span class="btn-label-short">GitHub</span>
       </a>
     </nav>
   </header>
@@ -464,6 +504,7 @@
         <div class="company-badge" style="background: linear-gradient(135deg, #6c47ff 0%, #4a1fa8 100%); font-size:0.8rem;">BJSS</div>
         <div class="current-role-info">
           <h3>Automation Test Engineer</h3>
+          <p style="margin-top:1px;">Private Sector Consultant</p>
           <p>BJSS · Remote</p>
         </div>
         <span class="badge-dates">Apr 2021 – Sep 2021</span>
@@ -484,6 +525,7 @@
         <div class="company-badge" style="background: linear-gradient(135deg, #6c47ff 0%, #4a1fa8 100%); font-size:0.8rem;">BJSS</div>
         <div class="current-role-info">
           <h3>Automation Test Engineer</h3>
+          <p style="margin-top:1px;">Public Sector Consultant</p>
           <p>BJSS · Glasgow</p>
         </div>
         <span class="badge-dates">Jun 2018 – Nov 2018</span>
@@ -556,31 +598,43 @@
       <p class="section-label">About</p>
       <div class="card">
         <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.75;">
-          Experienced Senior QA Automation Engineer based in the Greater Edinburgh Area with a strong focus on delivering quality software through robust automated testing strategies. With a background spanning testing frameworks, CI/CD pipelines, and modern automation tooling, I help teams ship with confidence. Currently applying these skills at Sky, one of Europe's leading media and entertainment companies.
+          Senior QA Automation Engineer with <span id="years-exp">16</span> years of experience delivering quality software across a wide range of industries and environments. Based in the Greater Edinburgh Area, I specialise in embedding quality throughout the full software development lifecycle via test oversight and automation — from inception through to delivery.
+        </p>
+        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; margin-top: 12px;">
+          I have extensive experience working within Agile Scrum and Quality Assurance teams, collaborating closely with developers, product owners and stakeholders to drive quality at every stage. My work spans QA test planning, strategy, test automation tooling and hands-on implementation — ensuring that releases are well-tested, reliable and meet the needs of the business and end users.
         </p>
       </div>
     </section>
+
+    <script>
+      (function () {
+        const startYear = 2010;
+        const years = new Date().getFullYear() - startYear;
+        document.getElementById('years-exp').textContent = years;
+      })();
+    </script>
 
     <!-- Expertise -->
     <section class="section">
       <p class="section-label">Technical Expertise</p>
       <div class="expertise-grid">
         <div class="skill-pill"><span class="dot"></span>Test Automation</div>
-        <div class="skill-pill"><span class="dot"></span>Selenium</div>
-        <div class="skill-pill"><span class="dot"></span>Appium</div>
+        <div class="skill-pill"><span class="dot"></span>Automation Framework Development</div>
+        <div class="skill-pill"><span class="dot"></span>Java, C#, JavaScript</div>
+        <div class="skill-pill"><span class="dot"></span>Selenium, Playwright</div>
         <div class="skill-pill"><span class="dot"></span>Cucumber / BDD</div>
-        <div class="skill-pill"><span class="dot"></span>Node.js</div>
-        <div class="skill-pill"><span class="dot"></span>Playwright</div>
         <div class="skill-pill"><span class="dot"></span>CI/CD Pipelines</div>
-        <div class="skill-pill"><span class="dot"></span>ISTQB Certified</div>
-        <div class="skill-pill"><span class="dot"></span>AI-assisted Dev</div>
+        <div class="skill-pill"><span class="dot"></span>ISTQB-Certified</div>
+        <div class="skill-pill"><span class="dot"></span>Manual Quality Assurance</div>
         <div class="skill-pill"><span class="dot"></span>QA Strategy</div>
+        <div class="skill-pill"><span class="dot"></span>Agile Ways of Working</div>
+        <div class="skill-pill"><span class="dot"></span>AI-assisted Development</div>
       </div>
     </section>
 
     <!-- Training -->
     <section class="section">
-      <p class="section-label">Professional Development</p>
+      <p class="section-label">Professional Development Courses</p>
       <div class="training-list">
         <div class="training-item">
           <div class="training-icon">🤖</div>
@@ -589,10 +643,6 @@
         <div class="training-item">
           <div class="training-icon">🎭</div>
           <span>Introduction to Microsoft Playwright (Node.js Automation)</span>
-        </div>
-        <div class="training-item">
-          <div class="training-icon">⚡</div>
-          <span>Basics of Node.js</span>
         </div>
         <div class="training-item">
           <div class="training-icon">💎</div>
@@ -624,6 +674,7 @@
         <div class="edu-icon">🎓</div>
         <div class="edu-info">
           <h3>Glasgow Caledonian University</h3>
+          <p>Computing Science BSc (with Distinction)</p>
           <p>2004 – 2009 · Glasgow, Scotland</p>
         </div>
       </div>
@@ -635,11 +686,11 @@
       <div class="card" style="display: flex; gap: 12px; flex-wrap: wrap;">
         <a class="btn btn-primary" href="https://www.linkedin.com/in/markcraigrobertson" target="_blank" rel="noopener" style="flex: 1; justify-content: center; min-width: 160px;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View LinkedIn Profile
+          <span class="btn-label-full">LinkedIn Profile</span><span class="btn-label-short">LinkedIn</span>
         </a>
-        <a class="btn btn-outline" href="#" target="_blank" rel="noopener" id="github-link-2" style="flex: 1; justify-content: center; min-width: 160px;">
+        <a class="btn btn-outline" href="https://www.github.com/sparkland" target="_blank" rel="noopener" id="github-link-2" style="flex: 1; justify-content: center; min-width: 160px;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-          GitHub Profile
+          <span class="btn-label-full">GitHub Profile</span><span class="btn-label-short">GitHub</span>
         </a>
       </div>
     </section>
